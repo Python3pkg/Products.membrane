@@ -56,5 +56,5 @@ class GroupAwareRoles(UserRelated):
                     g._unrestrictedGetObject())
                 roles.update(dict.fromkeys(group.getRoles()))
 
-        return roles.keys()
+        return list(roles.keys())
     security.declarePrivate('getRolesForPrincipal')

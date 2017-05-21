@@ -86,7 +86,7 @@ class MembranePropertyManager(BasePlugin, Cacheable):
                 if IPropertySheet.providedBy(psheet):
                     items = psheet.propertyItems()
                 else:
-                    items = psheet.items()
+                    items = list(psheet.items())
                 for prop, value in items:
                     properties[prop] = value
         if 'id' in properties:

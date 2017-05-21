@@ -111,7 +111,7 @@ class MembraneUserManager(BasePlugin, Cacheable):
         # allow arbitrary indexes to be passed in to the catalog query
         query_index_map = IAnnotations(mbtool).get(QIM_ANNOT_KEY)
         if query_index_map is not None:
-            for keyword in kw.keys():
+            for keyword in list(kw.keys()):
                 if keyword in query_index_map:
                     index_name = query_index_map[keyword]
                     search_term = kw[keyword]

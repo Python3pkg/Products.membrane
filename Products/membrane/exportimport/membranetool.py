@@ -65,7 +65,7 @@ class MembraneToolXMLAdapter(ZCatalogXMLAdapter):
         if query_index_map is not None:
             child = self._doc.createElement('query_index_map')
 
-            for key, value in query_index_map.items():
+            for key, value in list(query_index_map.items()):
                 sub = self._doc.createElement('index')
                 sub.setAttribute('name', key)
                 inner = self._doc.createTextNode(value)

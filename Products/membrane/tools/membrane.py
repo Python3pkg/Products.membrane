@@ -97,7 +97,7 @@ class MembraneTool(BaseTool):
         if attool is not None:
             mtypes = []
             catalog_map = getattr(aq_base(attool), 'catalog_map', {})
-            for t, c in catalog_map.items():
+            for t, c in list(catalog_map.items()):
                 if self.getId() in c:
                     mtypes.append(t)
             return mtypes

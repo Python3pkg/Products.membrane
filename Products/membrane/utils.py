@@ -3,9 +3,9 @@ from Acquisition.interfaces import IAcquirer
 
 from Products.CMFCore.utils import getToolByName
 
-from config import FILTERED_ROLES
-from config import TOOLNAME
-from interfaces import IUserAdder
+from .config import FILTERED_ROLES
+from .config import TOOLNAME
+from .interfaces import IUserAdder
 
 
 def getAllWFStatesForType(context, portal_type):
@@ -23,7 +23,7 @@ def getFilteredValidRolesForPortal(context):
     roles = dict.fromkeys(portal.validRoles())
     for filtered_role in FILTERED_ROLES:
         roles.pop(filtered_role, None)
-    return roles.keys()
+    return list(roles.keys())
 
 
 def getCurrentUserAdder(context):
@@ -43,7 +43,7 @@ def getCurrentUserAdder(context):
     else:
         adders = sm.getUtilitiesFor(IUserAdder)
         try:
-            name, adder = adders.next()
+            name, adder = next(adders)
         except StopIteration:
             adder = None
 
@@ -59,9 +59,8 @@ def findMembraneUserAspect(context, iface, **query):
     To get the brains instead of the interface implementation
     use :py:func:`findImplementations` instead.
     """
-    return filter(None,
-                  [iface(brain._unrestrictedGetObject(), None)
-                   for brain in findImplementations(context, iface, **query)])
+    return [_f for _f in [iface(brain._unrestrictedGetObject(), None)
+                   for brain in findImplementations(context, iface, **query)] if _f]
 
 
 def findImplementations(context, iface, **query):

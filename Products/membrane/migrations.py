@@ -25,11 +25,11 @@ def from_1_1_to_2_0(context):
     registry = setup_tool.getImportStepRegistry()
 
     # remove membrane-sitemanager import step
-    if u'membrane-sitemanager' in registry.listSteps():
-        handler = registry.getStepMetadata(u'membrane-sitemanager')['handler']
+    if 'membrane-sitemanager' in registry.listSteps():
+        handler = registry.getStepMetadata('membrane-sitemanager')['handler']
         if handler == 'Products.membrane.setuphandlers.initSiteManager':
-            if registry.getStepMetadata(u'membrane-sitemanager')['invalid']:
-                registry.unregisterStep(u'membrane-sitemanager')
+            if registry.getStepMetadata('membrane-sitemanager')['invalid']:
+                registry.unregisterStep('membrane-sitemanager')
 
     # if SearchableText is still a TextIndex, we need to drop the
     # index, import the correct index, then reindex

@@ -1,7 +1,7 @@
 """Test the GS export import handlers."""
 
 from Acquisition import aq_base
-from base import MembraneTestCase
+from .base import MembraneTestCase
 from Products.CMFCore.utils import getToolByName
 
 

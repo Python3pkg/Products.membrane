@@ -93,7 +93,7 @@ class MembraneProfilesLayer(PloneSandboxLayer):
         portal.invokeFactory(
             "Folder",
             id="test-folder",
-            title=u"Test Folder"
+            title="Test Folder"
         )
         logout()
 

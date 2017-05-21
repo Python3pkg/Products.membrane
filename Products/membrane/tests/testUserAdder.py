@@ -6,7 +6,7 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import TEST_USER_NAME
 from Products.membrane.utils import getCurrentUserAdder
 
-import base
+from . import base
 
 
 class TestUserAdder(base.MembraneTestCase):

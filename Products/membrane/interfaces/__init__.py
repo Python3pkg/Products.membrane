@@ -45,4 +45,4 @@ for iface in [
 from Products.membrane.interfaces.events import IMembraneTypeRegisteredEvent  # noqa
 from Products.membrane.interfaces.events import IMembraneTypeUnregisteredEvent  # noqa
 
-from utilities import IUserAdder  # noqa
+from .utilities import IUserAdder  # noqa
